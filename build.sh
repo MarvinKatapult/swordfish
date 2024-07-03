@@ -2,6 +2,7 @@
 project="swordfish"
 
 inc_raylib="-Lraylib/src/ -lraylib -Iraylib/src"
+inc_cvecs="external/cvecs.c -Iexternal"
 
 execute() {
     echo $1
@@ -28,6 +29,8 @@ yellow_echo "$project"
 
 ######### Compiling Raylib #########
     cd raylib/src/ 
+    echo -n "Compiling "
+    yellow_echo "Raylib"
     execute "make PLATFORM=PLATFORM_DESKTOP -j"
     error_code=$?
     echo -n "Compiling Raylib "
@@ -45,7 +48,7 @@ yellow_echo "$project"
 ######### Add Source Files #########
     execute "gcc -o $project -Wextra -Wall -pedantic -g -Iinclude \
         main.c \
-        $inc_raylib -lm"
+        $inc_raylib $inc_cvecs -lm"
 ###################################
     error_code=$?
     echo -n "Compiling "
