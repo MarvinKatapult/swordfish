@@ -1,3 +1,4 @@
+# !WORK IN PROGRESS!
 # The Idea
 Swordfish is a simple file explorer written in C with raylib.
 
